@@ -45,6 +45,12 @@ const products = data.filter(d => !EXCLUDE.test(d['備考'])).map(d => {
     name: d['商品名'],
     type: d['種類'],
     flavor: d['代表の味'],
+    // 味の種類は「／」区切り（「、」「,」も可）。代表の味が入っていなければ先頭に足す
+    flavors: (() => {
+      const list = (d['味の種類'] || '').split(/[／/、,]/).map(s => s.trim()).filter(Boolean);
+      if (list.length && d['代表の味'] && !list.includes(d['代表の味'])) list.unshift(d['代表の味']);
+      return list;
+    })(),
     volume: num(d['容量(g)']),
     price: num(d['通常価格(円)']),
     checkedAt: d['価格確認日'],

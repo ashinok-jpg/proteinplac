@@ -11,7 +11,7 @@
       <input type="hidden" name="use" value="<%= use %>">
       <% if (type) { %><input type="hidden" name="type" value="<%= type %>"><% } %>
       <div class="field">
-        <input class="input" name="q" placeholder="商品名・ブランドで検索" value="<%= q %>" aria-label="プロテイン検索">
+        <input class="input" name="q" placeholder="商品名・ブランド・味で検索" value="<%= q %>" aria-label="プロテイン検索">
       </div>
       <button class="btn" type="submit">検索</button>
     </form>
@@ -68,7 +68,7 @@
               <p class="p-card__spec">
                 タンパク質 <%= p.items.ratio.toFixed(0) %>%
                 ・ 1gあたり <%= p.yenPerGram.toFixed(1) %>円
-                <% if (p.flavor) { %>・ <%= p.flavor %><% } %>
+                <% if (p.flavors && p.flavors.length > 1) { %>・ 味 <%= p.flavors.length %>種類<% } else if (p.flavor) { %>・ <%= p.flavor %><% } %>
               </p>
             </div>
             <div class="p-card__scores">

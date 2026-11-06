@@ -51,6 +51,10 @@
 .detail-bars div{grid-template-columns:10em 1fr}
 .detail-bars dd small{color:var(--muted);font-size:.8125rem}
 .detail-bars .score-bar{max-width:160px}
+.flavor-list{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 8px;padding:0;list-style:none}
+.flavor{display:inline-flex;align-items:baseline;gap:6px;padding:.3rem .75rem;border:1px solid var(--border);border-radius:999px;background:var(--surface);font-size:.875rem}
+.flavor--main{border-color:var(--brand)}
+.flavor small{color:var(--muted);font-size:.6875rem}
 .muted-text{color:var(--muted);font-size:.8125rem}
 .spec-table{width:100%;border-collapse:collapse;font-size:.9375rem}
 .spec-table th,.spec-table td{padding:.55rem .75rem;border-bottom:1px solid var(--border);text-align:left}

@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 
   const scored = products.filter(p => p.scored);
   const types = [...new Set(scored.map(p => p.type))];
-  let list = scored.filter(p => (!type || p.type === type) && (!q || `${p.brand} ${p.name}`.toLowerCase().includes(q.toLowerCase())));
+  let list = scored.filter(p => (!type || p.type === type) && (!q || `${p.brand} ${p.name} ${p.flavor} ${(p.flavors || []).join(' ')}`.toLowerCase().includes(q.toLowerCase())));
   const key = {
     performance: p => -p.performance[use],
     value: p => -(p.value[use] * 10 + p.performance[use]),

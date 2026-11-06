@@ -35,6 +35,19 @@
       <p class="pending-note">データが足りないため、まだ点数を出していません。<% if (p.note) { %><br><small><%= p.note %></small><% } %></p>
     <% } %>
 
+    <h2>味</h2>
+    <% const flavors = p.flavors && p.flavors.length ? p.flavors : (p.flavor ? [p.flavor] : []); %>
+    <% if (flavors.length) { %>
+      <ul class="flavor-list">
+        <% flavors.forEach(function(fl){ %>
+          <li class="flavor<%= fl === p.flavor ? ' flavor--main' : '' %>"><%= fl %><% if (fl === p.flavor && flavors.length > 1) { %><small>成分はこの味</small><% } %></li>
+        <% }) %>
+      </ul>
+      <p class="muted-text"><%= flavors.length > 1 ? `全${flavors.length}種類。` : '' %>点数と下の成分表示は「<%= p.flavor %>」の数値です。味によって成分は少し変わります。</p>
+    <% } else { %>
+      <p class="muted-text">味の情報はまだありません。</p>
+    <% } %>
+
     <h2>成分表示（1食<%= p.serving ? f(p.serving) + 'g' : '' %>あたり）</h2>
     <table class="spec-table">
       <tr><th>タンパク質</th><td><%= p.protein != null ? f(p.protein) + 'g' : '—' %></td></tr>
